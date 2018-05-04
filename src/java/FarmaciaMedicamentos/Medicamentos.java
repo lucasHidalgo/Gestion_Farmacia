@@ -34,21 +34,11 @@ public class Medicamentos extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-                        
-            StringBuffer url = request.getRequestURL();
-            String uri = request.getRequestURI();
-            String ctx = request.getContextPath();
-            String base = url.substring(0, url.length() - uri.length() + ctx.length()) + "/";
+            /* TODO output your page here. You may use following sample code. */                                    
             
             URI contextUrl = URI.create(request.getRequestURL().toString())
                             .resolve(request.getContextPath());
-            out.println(uri);
-            out.println("<br/>");
-            out.println(ctx);
-            out.println("<br/>");
-            out.println(base);
-            out.println("<br/>");
+           
             out.println(contextUrl);
         }
     }   
