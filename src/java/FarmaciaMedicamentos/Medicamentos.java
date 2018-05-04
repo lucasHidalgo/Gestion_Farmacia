@@ -5,6 +5,7 @@
  */
 package FarmaciaMedicamentos;
 
+import GestionFdb.GestionFarmaciaDb;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
@@ -38,8 +39,12 @@ public class Medicamentos extends HttpServlet {
             
             URI contextUrl = URI.create(request.getRequestURL().toString())
                             .resolve(request.getContextPath());
-           
             out.println(contextUrl);
+            
+            GestionFarmaciaDb db = new GestionFarmaciaDb();
+            String retorno = db.Conectar();
+            out.println(retorno);
+            
         }
     }   
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -55,6 +60,7 @@ public class Medicamentos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
     }
 
     /**
