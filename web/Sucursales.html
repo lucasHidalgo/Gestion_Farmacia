@@ -11,31 +11,50 @@
   <body>
     <h3>My Google Maps Demo</h3>
     <div id="map"></div>
-    <script>
+    <script>               
       function initMap() {          
         var uluru = {lat: -34.613089, lng: -58.499307};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
           center: uluru
         });
-        /*
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-        
-        var infoWindow = new google.maps.InfoWindow({
-           content: '<h2> nombre sucursal</h2>' 
-        });
-        
-        marker.addListener('click',function(){
-            infoWindow.open(map,marker);
-        });*/
-        
-        agregarMarcador({lat: -34.613089, lng: -58.499307},'nombre sucursal1');
-        agregarMarcador({lat: -34.615585, lng: -58.497145},'nombre sucursal2');   
+        obtenerSucursales();
+  
         
         
+        //agregarMarcador({lat: -34.613089, lng: -58.499307},'nombre sucursal1');
+        
+        
+        
+        
+        
+        function obtenerSucursales(){
+         fetch('./Sucursal')
+            .then(
+            function(response) {
+            if (response.status !== 200) {
+               console.log('Looks like there was a problem. Status Code: ' +
+                response.status);
+                return;
+            }
+      // Examine the text in the response
+      response.json().then(function(data) {
+          var i = 0;
+          while(i < data.length){
+              agregarMarcador({lat: data[i].Latitud
+              ,lng: data[i].Longitud}
+              ,data[i].Nombre);   
+              console.log(data[i].Latitud);
+              i++;
+          }
+        
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+        }
         
         //funcion para agregar marcador en el mapa con su nombre
         function agregarMarcador(coordenadas, nombreSucursal){
@@ -52,10 +71,19 @@
             infoWindow.open(map,marker);
         });
       }
+      
+        
    }
+   
     </script>
+     <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCRkGIJlO76NKI82zhEJ4leGih0-2u46g&callback=initMap">
     </script>
+  
+    
   </body>
 </html>
