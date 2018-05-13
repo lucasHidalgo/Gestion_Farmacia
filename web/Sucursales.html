@@ -1,18 +1,61 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
-    <head>
-        <title>Sucursales</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <a href="index.html">
-            HOME
-        </a>
-    </body>
+  <head>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {          
+        var uluru = {lat: -34.613089, lng: -58.499307};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru
+        });
+        /*
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+        
+        var infoWindow = new google.maps.InfoWindow({
+           content: '<h2> nombre sucursal</h2>' 
+        });
+        
+        marker.addListener('click',function(){
+            infoWindow.open(map,marker);
+        });*/
+        
+        agregarMarcador({lat: -34.613089, lng: -58.499307},'nombre sucursal1');
+        agregarMarcador({lat: -34.615585, lng: -58.497145},'nombre sucursal2');   
+        
+        
+        
+        //funcion para agregar marcador en el mapa con su nombre
+        function agregarMarcador(coordenadas, nombreSucursal){
+        var marker = new google.maps.Marker({
+              position: coordenadas,
+              map: map
+        });
+        
+        var infoWindow = new google.maps.InfoWindow({
+           content: '<h5> '+nombreSucursal+'</h5>' 
+        });
+        
+        marker.addListener('click',function(){
+            infoWindow.open(map,marker);
+        });
+      }
+   }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCRkGIJlO76NKI82zhEJ4leGih0-2u46g&callback=initMap">
+    </script>
+  </body>
 </html>
