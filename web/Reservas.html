@@ -9,11 +9,94 @@ and open the template in the editor.
         <title>Reservas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="index.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<style>
+    .check
+{
+    opacity:0.5;
+	color:#996;
+	
+}
+    
+</style>
     </head>
     <body>
         
-        <a href="index.html">
-            HOME
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+          Filtrar Por
         </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Líquido</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Tableta</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Cápsulas</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Tópicos(Cremas)</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Gotas</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Inhaladores</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Inyecciones</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Parches</a>
+        </div>
+      </li>
+    </ul>
+      <form class="form-inline my-2">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+    
+  </div>
+</nav>
+        
+        <h1>Realiza tu pedido!</h1>     
+        
+        <div class="container">
+	<div class="row">
+		<form method="get">
+                    <div class="card-columns">
+		<div class="form-group">	
+		<div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Ibuprofeno600.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk1" id="item4" value="val1" hidden autocomplete="off"></label></div>
+		<div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Tafirol Plus.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk2" id="item4" value="val2" hidden autocomplete="off"></label></div>
+		<div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Voltaren Crema.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk3" id="item4" value="val3" hidden autocomplete="off"></label></div>
+		<div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Vick Crema.jpg" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk4" id="item4" value="val4" hidden autocomplete="off"></label></div>
+                <div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Pulmosan Jarabe.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk5" id="item4" value="val5" hidden autocomplete="off"></label></div>
+                <div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Anaflex.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk6" id="item4" value="val6" hidden autocomplete="off"></label></div>
+                <div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Bayaspirina.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk7" id="item4" value="val7" hidden autocomplete="off"></label></div>
+                <div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Ibuevanol.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk8" id="item4" value="val8" hidden autocomplete="off"></label></div>
+                <div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Tafirol Forte.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk8" id="item4" value="val9" hidden autocomplete="off"></label></div>
+                
+                </div>
+		</div>
+                    
+		<input type="submit" value="Aceptar" class="btn btn-success col-md-5">
+                <a href="index.html" class="btn btn-primary col-md-5">Volver</a>                
+		</form>
+	</div>	
+</div>
+        
+        
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>        
+<script>
+    $(document).ready(function(e){
+    		$(".img-check").click(function(){
+				$(this).toggleClass("check");
+			});
+	});
+</script>
     </body>
+    
 </html>
