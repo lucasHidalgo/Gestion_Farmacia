@@ -19,6 +19,16 @@ and open the template in the editor.
 	color:#996;
 	
 }
+.asideMed{
+    float:right;
+    width:15em;
+    height: 30em;
+    
+    
+}
+#formTemporal{
+    width:60em;
+}
     
 </style>
     </head>
@@ -60,29 +70,65 @@ and open the template in the editor.
 </nav>
         
         <h1>Realiza tu pedido!</h1>     
-        
+         <aside class="asideMed ">
+                <div class="card">
+                <h5 class="card-header">Medicamentos</h5>
+                <form method="POST" id="formSeleccionados" class="card-body">
+                    
+                      <div class="medSleccionados">
+                      <p class="card-text textoSinMeds ">Por favor, seleccione un medicamento</p><br/>
+                      </div>
+                    
+                      <a href="#" class="btn btn-success">Aceptar</a>
+                      </form>                    
+               </div>
+            </aside>
         <div class="container">
+              
 	<div class="row">
-		<form method="get">
+          
+		<form id="formTemporal"method="get">
                     <div class="card-columns">
 		<div class="form-group">	
-		<div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Ibuprofeno600.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk1" id="item4" value="val1" hidden autocomplete="off"></label></div>
-		<div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Tafirol Plus.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk2" id="item4" value="val2" hidden autocomplete="off"></label></div>
-		<div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Voltaren Crema.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk3" id="item4" value="val3" hidden autocomplete="off"></label></div>
-		<div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Vick Crema.jpg" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk4" id="item4" value="val4" hidden autocomplete="off"></label></div>
-                <div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Pulmosan Jarabe.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk5" id="item4" value="val5" hidden autocomplete="off"></label></div>
-                <div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Anaflex.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk6" id="item4" value="val6" hidden autocomplete="off"></label></div>
-                <div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Bayaspirina.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk7" id="item4" value="val7" hidden autocomplete="off"></label></div>
-                <div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Ibuevanol.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk8" id="item4" value="val8" hidden autocomplete="off"></label></div>
-                <div class="col-md-9"><label class="btn btn-primary"><img src="Fotos Gestion Farmacia/Tafirol Forte.png" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="chk8" id="item4" value="val9" hidden autocomplete="off"></label></div>
+		<div class="col-md-5"><label class="btn btn-primary "><img src="Fotos Gestion Farmacia/Ibuprofeno600.png" alt="..." class="img-thumbnail img-check"><input  class="med"type="checkbox" name="chk1" id="item4" value="val1" hidden autocomplete="off"></label></div>
+		<div class="col-md-5"><label class="btn btn-primary "><img src="Fotos Gestion Farmacia/Tafirol Plus.png" alt="..." class="img-thumbnail img-check"><input class="med" type="checkbox" name="chk2" id="item4" value="val2" hidden autocomplete="off"></label></div>
+		<div class="col-md-5"><label class="btn btn-primary "><img src="Fotos Gestion Farmacia/Voltaren Crema.png" alt="..." class="img-thumbnail img-check"><input class="med" type="checkbox" name="chk3" id="item4" value="val3" hidden autocomplete="off"></label></div>
+		<div class="col-md-5"><label class="btn btn-primary "><img src="Fotos Gestion Farmacia/Vick Crema.jpg" alt="..." class="img-thumbnail img-check"><input class="med" type="checkbox" name="chk4" id="item4" value="val4" hidden autocomplete="off"></label></div>
+                <div class="col-md-5"><label class="btn btn-primary "><img src="Fotos Gestion Farmacia/Pulmosan Jarabe.png" alt="..." class="img-thumbnail img-check"><input class="med" type="checkbox" name="chk5" id="item4" value="val5" hidden autocomplete="off"></label></div>
+                <div class="col-md-5"><label class="btn btn-primary "><img src="Fotos Gestion Farmacia/Anaflex.png" alt="..." class="img-thumbnail img-check"><input class="med" type="checkbox" name="chk6" id="item4" value="val6" hidden autocomplete="off"></label></div>
+                <div class="col-md-5"><label class="btn btn-primary "><img src="Fotos Gestion Farmacia/Bayaspirina.png" alt="..." class="img-thumbnail img-check"><input class="med" type="checkbox" name="chk7" id="item4" value="val7" hidden autocomplete="off"></label></div>
+                <div class="col-md-5"><label class="btn btn-primary "><img src="Fotos Gestion Farmacia/Ibuevanol.png" alt="..." class="img-thumbnail img-check"><input class="med" type="checkbox" name="chk8" id="item4" value="val8" hidden autocomplete="off"></label></div>
+                <div class="col-md-5"><label class="btn btn-primary "><img src="Fotos Gestion Farmacia/Tafirol Forte.png" alt="..." class="img-thumbnail img-check"><input class="med" type="checkbox" name="chk8" id="item4" value="val9" hidden autocomplete="off"></label></div>
                 
                 </div>
 		</div>
                     
 		<input type="submit" value="Aceptar" class="btn btn-success col-md-5">
-                <a href="index.html" class="btn btn-primary col-md-5">Volver</a>                
-		</form>
+                <a href="index.html" class="btn btn-primary col-md-5">Volver</a> 
+                
+                <!--Ejemplo de como deberia ser -->
+                <h4>Eemplo de como deben ser.. descripcion, via, precio, cantidad</h4>
+                <div class="card" style="width: 18rem;">                    
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                    <div class="card-body">
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+               </div>
+                
+                
+            </form>
+             
 	</div>	
+          
 </div>
         
         
@@ -95,7 +141,51 @@ and open the template in the editor.
     		$(".img-check").click(function(){
 				$(this).toggleClass("check");
 			});
-	});
+                        //checkboxes de las imagenes
+                        let medicamentos = document.querySelectorAll(".med");
+                         for(var i = 0; i < medicamentos.length; i++) {
+                            var medicamento = medicamentos[i];
+                            //mando el elemento clickeado a la funcion
+                            medicamento.onclick = function() {
+                                seleccionarMedicamentos(this);
+                            }
+                        }
+                      
+                      
+    function seleccionarMedicamentos(medicamento){
+        let seleccionados = document.querySelector(".medSleccionados");        
+        let texto = document.querySelector(".textoSinMeds");
+       
+       //si el medicamento esta checkeado, lo añade al aside
+        if(medicamento.checked){
+             texto.innerHTML = "";
+        seleccionados.innerHTML += "<div id='"+medicamento.value+"'>\
+        <label> Medicamento seleccionado: "+medicamento.value+"\
+            <input type='hidden' value='"+medicamento.value+"' />\
+        </label>\
+        </div>"            
+        }else{
+            //si no esta checkeado, verifico cual es el que se deselecciono y lo elimino
+            var inputs = document.querySelectorAll("#formSeleccionados input[type=hidden]");
+              
+            for(let i = 0; i < inputs.length;i++){ 
+                //verifico
+                if(inputs[i].value == medicamento.value){                    
+                        document.querySelector("#"+inputs[i].value+"").remove();
+                    }
+                }
+                //si ya esta totalmente vacia el aside
+            if(inputs.length === 1){
+                texto.innerHTML = "Por favor, seleccione un medicamento";                              
+            }
+        
+            
+            
+        }                      
+    }
+  });
+                        
+                      
 </script>
     </body>
     
