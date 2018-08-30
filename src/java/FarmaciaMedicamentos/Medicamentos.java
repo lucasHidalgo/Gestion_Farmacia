@@ -5,7 +5,7 @@
  */
 package FarmaciaMedicamentos;
 
-import GestionFdb.GestionFarmaciaDb;
+import GestionFdb.Database;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
@@ -41,8 +41,8 @@ public class Medicamentos extends HttpServlet {
                             .resolve(request.getContextPath());
             out.println(contextUrl);
             
-            GestionFarmaciaDb db = new GestionFarmaciaDb();
-            String retorno = db.Conectar();
+            Database db = new Database();
+            String retorno = "";
             out.println(retorno);
             
         }

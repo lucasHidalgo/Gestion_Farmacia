@@ -7,12 +7,7 @@ package GestionFdb;
 
 import java.sql.*;
 
-
-/**
- *
- * @author lucas
- */
-public class GestionFarmaciaDb {
+public class Database {
    private static String USUARIO = "root";
    private static String PASSWORD = "";    //"root";
    private static String BASE = "jdbc:mysql://localhost/gestionfarmacia_db";  // "root";    
@@ -20,7 +15,8 @@ public class GestionFarmaciaDb {
    
            
    
-   public static String Conectar(){
+   public static Connection obtenerDb(){
+       Connection conectar;
      try {
             //        processRequest(request, response);
             // 1. Queremos Acceder a la Base de DAtos
@@ -29,14 +25,17 @@ public class GestionFarmaciaDb {
             // 0. el driver de conexion con la Base acual
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             // 1. conectar
-            Connection conectar = DriverManager.getConnection(
+            conectar = DriverManager.getConnection(
                     BASE,
                     USUARIO,
                     PASSWORD);
-            return "ok";            
+                        
 
         } catch (Exception ex) {
-            return "Error" + ex.getMessage();
+           return null;
         }
+     return conectar;
    }
+   
+  
 }

@@ -11,7 +11,13 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="index.css" rel="stylesheet" type="text/css"/>
         
-   
+        <style>body {
+    background-image: url("Fotos Gestion Farmacia/Farmacia.jpg");
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}</style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     </head>
@@ -47,16 +53,16 @@ and open the template in the editor.
             <div class="formulario">
                 <h2>Iniciar Sesión</h2>
                 <form action="#"> 
-                    <input class="input" type="email" placeholder="Email" required>
-                    <input class="input" type="password"  placeholder="Contraseña" required>
-                    <input class="enviar" type="submit" value="Iniciar Sesión">
+                    <input class="input" id="usuarioEmail" type="email" placeholder="Email" required>
+                    <input class="input" id="usuarioClave" type="password"  placeholder="Contraseña" required>
+                    <input class="enviar" type="button" value="Iniciar Sesión" onclick="logIn()">
 		</form>
 	    </div>
         
         
         <div class="formulario">
             <h2>Crea tu cuenta</h2>
-            <form action="#">
+            <form action="LoginServlet">
                 <input class="input" type="text" placeholder="Nombre" required>
 		<input class="input" type="text" placeholder="Apellido" required>
                 <input class="input" type="email" placeholder="Email" required>
@@ -64,7 +70,7 @@ and open the template in the editor.
                 <input class="input" type="date" name="fecha" required>
                 <input class="input" type="text" placeholder="DNI" required>
 		<input class="input" type="password" placeholder="Contraseña" required>
-                <input class="enviar" type="submit" value="Registrarse">
+                <input class="enviar" type="button" value="Registrarse" onclick="registrarse()" >
 	    </form>
 	</div>
     </div>

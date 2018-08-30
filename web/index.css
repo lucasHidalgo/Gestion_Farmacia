@@ -6,13 +6,6 @@
     box-sizing: border-box;
 }
 
-body {
-    background-image: url("Fotos Gestion Farmacia/Farmacia.jpg");
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-attachment: fixed;
-    
-}
 
 
 .contenedor-form {
