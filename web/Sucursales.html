@@ -2,6 +2,7 @@
 <html>
   <head>
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
   <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -9,18 +10,57 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+
+<script>
+function abrirVentana() {
+
+}
+</script>
+
+<script type="text/javascript">
+function openDialog() {
+    $('#overlay').fadeIn('fast', function() {
+        $('#popup').css('display','block');
+        $('#popup').animate({'left':'30%'},500);
+    });
+}
+ 
+function closeDialog(id) {
+    $('#'+id).css('position','absolute');
+    $('#'+id).animate({'left':'-100%'}, 500, function() {
+        $('#'+id).css('position','fixed');
+        $('#'+id).css('left','100%');
+        $('#overlay').fadeOut('fast');
+    });
+}
+
+function MM_popupMsg(msg) { //v1.0
+  alert(msg);
+}
+</script>
+
     <style>
       #map {
         height: 400px;
         width: 100%;
        }
+    #apDiv1 {
+	position: absolute;
+	left: 536px;
+	top: 390px;
+	width: 444px;
+	height: 349px;
+	z-index: 1;
+	animation-play-state: running;
+}
     </style>
   </head>
   <body>
+  
     <h3>Sucursales</h3>
  
 
-      <table width="100%" border="1" height="70%">
+  <table width="100%" border="1" height="70%">
         <tr>
           <td width="54%" height="47">  <div id="map";>
     <script>               
@@ -177,13 +217,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>   
-      
-
- 
-    
-    
-  
-    
+</div>
+ <div class="d-flex" style="width:180px; height:180px" onClick="MM_popupMsg('No seas \&quot;HUANACO\&quot;... MAMA TE VA A RETAR!')"> <img src="propagandas/16.jpg" style="width:100%; height:100%;"></div>
 </body>
 </html>
