@@ -1,31 +1,13 @@
-<<<<<<< Updated upstream
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/lnrieb/Desktop/IFTS%2016/Taller%20de%20implementación/TP%20FINAL/Gestion_Farmacia/src/java/GestionFdb/LoginServlet.java</file>
-            <file>file:/C:/Users/lnrieb/Desktop/IFTS%2016/Taller%20de%20implementación/TP%20FINAL/Gestion_Farmacia/web/index.css</file>
-            <file>file:/C:/Users/lnrieb/Desktop/IFTS%2016/Taller%20de%20implementación/TP%20FINAL/Gestion_Farmacia/web/Reservas.html</file>
-            <file>file:/C:/Users/lnrieb/Desktop/IFTS%2016/Taller%20de%20implementación/TP%20FINAL/Gestion_Farmacia/web/Sucursales.html</file>
-            <file>file:/C:/Users/lnrieb/Desktop/IFTS%2016/Taller%20de%20implementación/TP%20FINAL/Gestion_Farmacia/web/index.html</file>
-            <file>file:/C:/Users/lnrieb/Desktop/IFTS%2016/Taller%20de%20implementación/TP%20FINAL/Gestion_Farmacia/src/java/Entidades/Usuarios.java</file>
-            <file>file:/C:/Users/lnrieb/Desktop/IFTS%2016/Taller%20de%20implementación/TP%20FINAL/Gestion_Farmacia/src/java/GestionFdb/Database.java</file>
-            <file>file:/C:/Users/lnrieb/Desktop/IFTS%2016/Taller%20de%20implementación/TP%20FINAL/Gestion_Farmacia/src/java/FarmaciaMedicamentos/Medicamentos.java</file>
+            <file>file:/C:/Users/lucas/Desktop/facultad/Repos/Gestion_Farmacia/web/index.html</file>
+            <file>file:/C:/Users/lucas/Desktop/facultad/Repos/Gestion_Farmacia/web/js/main.js</file>
+            <file>file:/C:/Users/lucas/Desktop/facultad/Repos/Gestion_Farmacia/web/Sucursales.html</file>
+            <file>file:/C:/Users/lucas/Desktop/facultad/Repos/Gestion_Farmacia/web/Reservas.html</file>
+            <file>file:/C:/Users/lucas/Desktop/facultad/Repos/Gestion_Farmacia/web/testTemplate.html</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Nata/Documents/Gestion%20Farmacia/Gestion_Farmacia/web/index.css</file>
-            <file>file:/C:/Users/Nata/Documents/Gestion%20Farmacia/Gestion_Farmacia/web/Reservas.html</file>
-            <file>file:/C:/Users/Nata/Documents/Gestion%20Farmacia/Gestion_Farmacia/web/index.html</file>
-            <file>file:/C:/Users/Nata/Documents/Gestion%20Farmacia/Gestion_Farmacia/web/Reservas.css</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> Stashed changes

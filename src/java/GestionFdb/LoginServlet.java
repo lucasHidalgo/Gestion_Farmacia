@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
-
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        
    JsonObject data = new Gson().fromJson(request.getReader(), JsonObject.class);
@@ -42,9 +41,7 @@ public class LoginServlet extends HttpServlet {
     boolean[] result = {fueValidado};
     Gson gson = new Gson();
     String json = gson.toJson(result);          
-    out.print(json);
-    
-
+    out.print(json);    
   }
 
 
