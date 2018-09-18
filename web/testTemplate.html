@@ -27,6 +27,12 @@ and open the template in the editor.
         <script src="Adminux/js/jquery.sparkline.min.js" type="text/javascript"></script>
         <script src="Adminux/js/dataTables.bootstrap4.js" type="text/javascript"></script>
         <script src="Adminux/js/dataTables.responsive.min.js" type="text/javascript"></script>
+        <style>
+          #map {
+        height: 550px;
+        width: 60%;
+       }
+        </style>
     </head>
     <body class="menuclose-right">
   <!-- Page Loader -->
@@ -47,7 +53,8 @@ and open the template in the editor.
 
 <header class="navbar-fixed">
   <nav class="navbar navbar-toggleable-md navbar-inverse bg-faded">
-              <div class="sidebar-left"> <a class="navbar-brand imglogo" href="index.html">
+              <div class="sidebar-left"> 
+                  <a class="navbar-brand imglogo" href="index.html">
                       RivotrilYa <img src="Fotos Gestion Farmacia/logo.jpg" width=45em />
           </a>
       <button class="btn btn-link icon-header mr-sm-2 pull-right menu-collapse"><span class="fa fa-bars"></span></button>
@@ -157,21 +164,29 @@ and open the template in the editor.
       </ul>
       <!-- /.nav-second-level --> 
     </li>   
-    </div>      
+    </div>    
+
+
 <div class="wrapper-content">
-  <div class="container">  
-<div class="card-body">
+  <div class="container col-lg-15">
+      <div class="row">
+      <div class="col-sm-16">             
+        <div class="card">
+          <div class="card-header">
+            <h6 class="card-title">Step Wizard Thin</h6>
+          </div>
+          <div class="card-body">
             <div class="container_wizard wizard-thin">
               <div class="stepwizard">
                 <div class="stepwizard-row setup-panel d-flex">
                   <div class="stepwizard-step col"> <a href="#step-12" class="btn success btn-primary"><span class="btn-round">1</span>
-                    <p>PASO 1<small>Elegir sucursal</small></p>
+                    <p>Fill details<small>Setup guidelines</small></p>
                     </a> </div>
                   <div class="stepwizard-step col"> <a href="#step-22" class="btn btn-secondary success disabled"><span class="btn-round">2</span>
-                    <p>PASO 2<small>Elegir productos</small></p>
+                    <p>Step 2<small>Confirm</small></p>
                     </a> </div>
                   <div class="stepwizard-step col"> <a href="#step-32" class="btn btn-secondary success disabled"><span class="btn-round">3</span>
-                    <p>PASO 3<small>Check-out</small></p>
+                    <p>Step 3<small>Make payment</small></p>
                     </a> </div>
                 </div>
               </div>
@@ -180,22 +195,47 @@ and open the template in the editor.
                   <div class="col-sm-16">
                     <div class="row">
                       <div class="col-sm-16">
-                        <h3 class=" mb-2"> ELEGIR LA SUCURSAL ACA</h3>
+                        <h3 class=" mb-2"> Step 1</h3>
                       </div>
                     </div>
                     <br>
                     <div class="row">
-                      <div class="col-sm-16 col-md-8 col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label">First Name</label>
-                          <input maxlength="100" type="text" required="" class="form-control" placeholder="Enter First Name">
-                        </div>
-                        <div class="form-group">
-                          <label class="form-control-label">Last Name</label>
-                          <input maxlength="100" type="text" required="" class="form-control" placeholder="Enter Last Name">
-                        </div>
+                    <div id="map"></div>    
+                    <div class="col-md-6 col-lg-6 col-xl-6">
+                    <div class="card full-screen-container">
+                      <div class="card-header align-items-start justify-content-between flex">
+                        <h5 class="card-title  pull-left">Sucursales </h5>
+                      
                       </div>
+                      <div class="card-body">
+                        <div class="list-unstyled comment-list" style="height:400px;">
+                          <div class="media"> <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="Generic user image"> <span class="user-status bg-success "></span></span>
+                            <div class="media-body">
+                              <h6 class="mt-0 mb-1">DEVOTO </h6>
+                              <p class="description">
+                                  Direccion: <a>calle 456</a><br>
+                                  Direccion: <a>calle 123</a>    <br>                              
+                              </p>
+                              
+                            </div>
+                          </div>
+                          <div class="media"> <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="Generic user image"> <span class="user-status bg-success "></span></span>
+                            <div class="media-body">
+                              <h6 class="mt-0 mb-1">PALERMO </h6>
+                              <p class="description">
+                                  Direccion: <a>calle 987</a>
+                                  Direccion: <a>calle 456</a>                                  
+                                  Direccion: <a>calle 123</a>                                  
+                              </p>
+                              
+                            </div>
+                          </div>  
+                            
+                          </div>
+                        </div>
+                      </div>                      
                     </div>
+                  </div>                
                     <div class="wizard-footer">
                       <div class="col-sm-16 ">
                         <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
@@ -207,88 +247,21 @@ and open the template in the editor.
                   <div class="col-sm-16">
                     <div class="row">
                       <div class="col-sm-16">
-                        <h3 class=" mb-2"> ELEGIR PRODUCTO ACA(Cargar mediante ajax/fetch los medicamentos con stock segun sucursal)</h3>
+                        <h3 class=" mb-2"> Step 2</h3>
                       </div>
                     </div>
                     <br>
                     <div class="row">
-                       <div class="card-body">
-                    <table class="table table-striped table-bordered m-0 table-hover">
-                                <thead>
-                                    <tr><th width="180">Item</th>
-                                    <th width="50%">Nombre</th>
-                                    <th>Via</th>
-                                </tr></thead>
-                                  <tbody>
-                                    <tr>
-                                        <td>
-                                            <figure class="cart_img"><img src="Fotos Gestion Farmacia/Voltaren Crema.png"></figure>
-                                            <div class="input-group">
-                                                <button class="input-group-addon bg-primary">-</button>
-                                                <input type="text" class="form-control text-center" placeholder="Location..." value="1">
-                                                <button class="input-group-addon bg-primary">+</button>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h4 class="card-title ">Product one </h4>
-                                            <h4>$ 204 <small class="text-danger"><s>$ 250</s></small></h4>
-                                            <h5 class="text-warning"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <small><a href="">(9) Rating</a></small></h5>
-                                            <p class="card-text">Descripcion</p>
-                                            <a href="" class="btn btn-outline-primary"><i class="fa fa-heart"></i> Añadir</a>
-                                            <!--<a href="" class="btn btn-danger ml-2"><i class="fa fa-trash"></i> Remove</a>-->
-                                        </td>
-                                        <td>
-                                            <strong>Via oral</strong><br>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <figure class="cart_img"><img src="Fotos Gestion Farmacia/Tafirol Plus.png"></figure>
-                                            <div class="input-group">
-                                                <button class="input-group-addon bg-primary">-</button>
-                                                <input type="text" class="form-control text-center" placeholder="Location..." value="1">
-                                                <button class="input-group-addon bg-primary">+</button>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h4 class="card-title ">Product one </h4>
-                                            <h4>$ 204 <small class="text-danger"><s>$ 250</s></small></h4>
-                                            <h5 class="text-warning"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <small><a href="">(9) Rating</a></small></h5>
-                                            <p class="card-text">Descripcion</p>
-                                            <a href="" class="btn btn-outline-primary"><i class="fa fa-heart"></i> Añadir</a>
-                                            <!--<a href="" class="btn btn-danger ml-2"><i class="fa fa-trash"></i> Remove</a>-->
-                                        </td>
-                                        <td>
-                                            <strong>Via nasal</strong>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <figure class="cart_img"><img src="Fotos Gestion Farmacia/Ibuprofeno600.png"></figure>
-                                            <div class="input-group">
-                                                <button class="input-group-addon bg-primary">-</button>
-                                                <input type="text" class="form-control text-center" placeholder="Location..." value="1">
-                                                <button class="input-group-addon bg-primary">+</button>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h4 class="card-title ">Product one </h4>
-                                            <h4>$ 204 <small class="text-danger"><s>$ 250</s></small></h4>
-                                            <h5 class="text-warning"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <small><a href="">(9) Rating</a></small></h5>
-                                            <p class="card-text">Descripcion</p>
-                                            <a href="" class="btn btn-outline-primary"><i class="fa fa-heart"></i> Añadir</a>
-                                            <!--<a href="" class="btn btn-danger ml-2"><i class="fa fa-trash"></i> Remove</a>-->
-                                        </td>
-                                        <td>
-                                            <strong>Via Oral</strong>
-                                        </td>
-
-                                    </tr>
-                                  </tbody>
-                            </table>
-                </div>
+                      <div class="col-sm-16 col-md-8 col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label">Company Name</label>
+                          <input maxlength="200" type="text" required="" class="form-control" placeholder="Enter Company Name">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label">Company Address</label>
+                          <input maxlength="200" type="text" required="" class="form-control" placeholder="Enter Company Address">
+                        </div>
+                      </div>
                     </div>
                     <div class="wizard-footer">
                       <div class="col-sm-16 ">
@@ -301,7 +274,7 @@ and open the template in the editor.
                   <div class="col-sm-16">
                     <div class="row">
                       <div class="col-sm-16">
-                        <h3 class=" mb-2"> Mostrar productos elegidos, precio, sucursal, metodo de pago, tiemmpo aprox para que el delivery</h3>
+                        <h3 class=" mb-2"> Step 3</h3>
                       </div>
                     </div>
                     <div class="row">
@@ -324,11 +297,67 @@ and open the template in the editor.
               </form>
             </div>
           </div>
+        </div>       
+      </div>
+    </div>
   </div>
-</div>
+</div> 
 <script>
-
-$(document).on('ready', function () {
+    function initMap() {          
+        var uluru = {lat: -34.613089, lng: -58.499307};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru
+        });
+        obtenerSucursales();                                                       
+        
+        function obtenerSucursales(){
+         fetch('./Sucursal')
+            .then(
+            function(response) {
+            if (response.status !== 200) {
+               console.log('Looks like there was a problem. Status Code: ' +
+                response.status);
+                return;
+            }
+      // Examine the text in the response
+      response.json().then(function(data) {
+          var i = 0;
+          while(i < data.length){
+              agregarMarcador({lat: data[i].Latitud
+              ,lng: data[i].Longitud}
+              ,data[i].Nombre);   
+              console.log(data[i].Latitud);
+              i++;
+          }        
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+        }
+        
+        //funcion para agregar marcador en el mapa con su nombre
+        function agregarMarcador(coordenadas, nombreSucursal){
+        var marker = new google.maps.Marker({
+              position: coordenadas,
+              map: map
+        });
+        
+        var infoWindow = new google.maps.InfoWindow({
+           content: '<h5> '+nombreSucursal+'</h5>' 
+        });
+        
+        marker.addListener('click',function(){
+            infoWindow.open(map,marker);
+        });
+      }
+      
+        
+   }
+$(document).on('ready', function () {    
+    
     $(".container_wizard").each(function(){
         var navListItems = $(this).find('div.setup-panel div a'),
             allWells = $(this).find('.setup-content'),
@@ -369,5 +398,8 @@ $(document).on('ready', function () {
 
     
 </script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCRkGIJlO76NKI82zhEJ4leGih0-2u46g&callback=initMap">
+    </script>
     </body>
 </html>
