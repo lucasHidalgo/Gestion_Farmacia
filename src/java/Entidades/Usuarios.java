@@ -13,7 +13,19 @@ import java.sql.*;
  * @author monica
  */
 public class Usuarios {
-    
+    public int usuario_id;
+    public String us_nombre;
+    public String us_apellido;
+    public String us_email;
+    public String clave;
+    public int us_tipodoc;
+    public String us_numdoc;
+    public int PerfilId;
+    public double us_sueldo;
+    public Date us_fechaalta;
+    public Date us_fechabaja;
+    public int us_estado;
+    public int us_usuarioidalta;
     
      public static boolean ValidarUsuario(Connection conn, String usuario,String clave){
        try{

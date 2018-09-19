@@ -21,12 +21,16 @@ public class Producto {
     public double Precio;
     public boolean EsVentaLibre;
     public Area Area;
-    //Completar
-    public int ProeedorId;
-    //public Proveedor Proveedor;
-    //public Via Via;
-    //public Tipo Tipo;
+    public int ProveedorId;
+    public Proveedor Proveedor;
+    public Via Via;
+    public Tipo Tipo;
     public int Stock;
+    public Barrio Barrio;
+    public Perfil Perfil;
+    public Reservas Reservas;
+    public Ventas Ventas;
+    public ProductoSucursales ProductoSucursales;
     
     public static ArrayList<Producto> ObtenerProductosSegunSucursal(Connection db,int sucursalId){
         ArrayList<Producto> productos = new ArrayList<Producto>();        
