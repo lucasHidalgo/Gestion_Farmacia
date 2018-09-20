@@ -193,6 +193,5 @@ $(document).on("ready", function(){
     
     
     
-    
 });
 

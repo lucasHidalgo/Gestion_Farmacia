@@ -20,8 +20,7 @@ public class Producto {
     public String Codigo;
     public double Precio;
     public boolean EsVentaLibre;
-    public Area Area;
-    public int ProveedorId;
+    public Area Area;    
     public Proveedor Proveedor;
     public Via Via;
     public Tipo Tipo;
@@ -31,7 +30,8 @@ public class Producto {
         ArrayList<Producto> productos = new ArrayList<Producto>();        
            try{                   
             String queryProductos = "SELECT"
-                    + " p.Id productoId ,Stock ,p.Nombre prodNombre, p.Precio prodPrecio,p.EsVentaLibre, a.Nombre area ,prov.Nombre proveedor ,v.Nombre via,t.Nombre tipo "
+                    + " p.Id productoId ,Stock ,p.Nombre prodNombre, p.Precio prodPrecio,p.EsVentaLibre, a.Id areaId, a.Nombre area ,prov.Nombre proveedor,prov.Id proveedorId,prov.Cuit proveedorCuit,"
+                    + "v.Id viaId ,v.Nombre via,t.Id tipoId, t.Nombre tipo "
                     + "FROM productosucursales "
                     + "JOIN productos as p on productosucursales.ProductoId = p.Id"
                     + " JOIN Area as a on p.Area = a.Id "
@@ -50,12 +50,20 @@ public class Producto {
                 p.Stock = rs.getInt("Stock");       
                 
                 p.Proveedor = new Proveedor();
+                p.Proveedor.Id = rs.getInt("proveedorId");
                 p.Proveedor.Nombre = rs.getString("proveedor");
+                p.Proveedor.Cuit = rs.getString("proveedorCuit");
+                
                 p.Tipo = new Tipo();
+                p.Tipo.Id = rs.getInt("tipoId");
                 p.Tipo.Nombre = rs.getString("tipo");
+                
                 p.Via = new Via();
+                p.Via.Id = rs.getInt("viaId");
                 p.Via.Nombre = rs.getString("via");
                 p.Area = new Area();
+                
+                p.Area.Id = rs.getInt("areaId");
                 p.Area.Nombre = rs.getString("area");
                 productos.add(p);
             }              

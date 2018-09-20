@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author lucas
  */
-@WebServlet(name = "Medicamentos", urlPatterns = {"/Medicamentos"})
+@WebServlet(name = "Medicamentos", urlPatterns = {"/Medicamentos/ObtenerProductosPorSucursal"})
 public class Medicamentos extends HttpServlet {
     //traer todos los medicamentos en base a la sucursal y que tengan stock
   @Override
