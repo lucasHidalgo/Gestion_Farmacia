@@ -12,6 +12,8 @@ package Entidades;
 public class ProductoSucursales {
     public int Id;
     public int ProductoId;
+    public Producto Producto;
     public int SucursalId;
+    public Sucursales Sucursal;
     public int Stock;
 }

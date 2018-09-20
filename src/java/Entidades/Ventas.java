@@ -14,9 +14,12 @@ import java.sql.Date;
 public class Ventas {
     public int Id;
     public int ClienteId;
+    public Usuarios Cliente;
     public int ProductoId;
+    public Producto Producto;
     public int Cantidad;
     public Date FechaVenta;
     public int CajeroId;
+    public Usuarios Cajero;
     public double PrecioVenta;
 }

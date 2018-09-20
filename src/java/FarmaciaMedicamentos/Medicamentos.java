@@ -27,13 +27,14 @@ import javax.servlet.http.HttpServletResponse;
 public class Medicamentos extends HttpServlet {
     //traer todos los medicamentos en base a la sucursal y que tengan stock
   @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {            
     JsonObject data = new Gson().fromJson(request.getReader(), JsonObject.class);
     int idSucursal = data.get("idSucursal").getAsInt();    
     Connection db = Database.obtenerDb();
+    
     //obtengo sucursalId dependiendo que sucursal elija el cliente
     Sucursales sucursal = Sucursales.obtenerSucursal(db,idSucursal);
+    
     //Obtengo todos los productos deacuerdo a la sucursal y valido que tenga almenos 1 de stock
     ArrayList<Producto> productos = Producto.ObtenerProductosSegunSucursal(db,sucursal.Id);
     

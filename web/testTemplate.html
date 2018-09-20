@@ -38,7 +38,7 @@ and open the template in the editor.
   <!-- Page Loader -->
 <div class="loader_wrapper align-items-center text-center" style="display: none;">
   <div class="load7 load-wrapper">
-    <img src="../img/logo.png" alt="" class="loading_img">
+    
     <div class="loader"> Loading... </div>
     <div class="clearfix"></div>
     <br>
@@ -69,23 +69,23 @@ and open the template in the editor.
       <li class="nav-item active">
         <button class="btn btn-link icon-header " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-envelope-o"></span> <span class="badge-number bg-success"></span></button>
         <div class="dropdown-menu message-container">
-          <div class="list-unstyled"> <a href="#" class="media"> <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="Generic user image"></span>
+          <div class="list-unstyled"> <a href="#" class="media"> <span class="message_userpic"></span>
             <div class="media-body">
               <h6 class="mt-0 mb-1">Dhananjay Chauhan</h6>
               Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. </div>
-            </a> <a href="#" class="media"> <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="Generic user image"></span>
+            </a> <a href="#" class="media"> <span class="message_userpic"></span>
             <div class="media-body">
               <h6 class="mt-0 mb-1">Max Smith</h6>
               Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. </div>
-            </a> <a href="#" class="media"> <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="Generic user image"></span>
+            </a> <a href="#" class="media"> <span class="message_userpic"></span>
             <div class="media-body">
               <h6 class="mt-0 mb-1">Astha Smith</h6>
               Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. </div>
-            </a> <a href="#" class="media"> <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="Generic user image"></span>
+            </a> <a href="#" class="media"> <span class="message_userpic"></span>
             <div class="media-body">
               <h6 class="mt-0 mb-1">Tommy Cruszii</h6>
               Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. </div>
-            </a> <a href="#" class="media"> <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="Generic user image"></span>
+            </a> <a href="#" class="media"> <span class="message_userpic"></span>
             <div class="media-body">
               <h6 class="mt-0 mb-1">Max Smith</h6>
               Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. </div>
@@ -126,7 +126,7 @@ and open the template in the editor.
     <div class="sidebar-right pull-right ">
       <ul class="navbar-nav  justify-content-end">
         <li class="nav-item">
-          <button class="btn-link btn userprofile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="userpic"><img src="../img/user-header.png" alt="user pic"></span> <span class="text">Usuario</span></button>
+          <button class="btn-link btn userprofile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="userpic"></span> <span class="text">Usuario</span></button>
           <div class="dropdown-menu"> <a class="dropdown-item" href="customerprofile.html">Profile</a> <a class="dropdown-item" href="#">Analytics Report</a>            
              </div>
         </li>
@@ -208,29 +208,7 @@ and open the template in the editor.
                       
                       </div>
                       <div class="card-body">
-                        <div class="list-unstyled comment-list" style="height:400px;">
-                          <div class="media"> <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="Generic user image"> <span class="user-status bg-success "></span></span>
-                            <div class="media-body">
-                              <h6 class="mt-0 mb-1">DEVOTO </h6>
-                              <p class="description">
-                                  Direccion: <a>calle 456</a><br>
-                                  Direccion: <a>calle 123</a>    <br>                              
-                              </p>
-                              
-                            </div>
-                          </div>
-                          <div class="media"> <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="Generic user image"> <span class="user-status bg-success "></span></span>
-                            <div class="media-body">
-                              <h6 class="mt-0 mb-1">PALERMO </h6>
-                              <p class="description">
-                                  Direccion: <a>calle 987</a>
-                                  Direccion: <a>calle 456</a>                                  
-                                  Direccion: <a>calle 123</a>                                  
-                              </p>
-                              
-                            </div>
-                          </div>  
-                            
+                        <div id="sucursales" class="list-unstyled comment-list" style="height:400px;">                                                            
                           </div>
                         </div>
                       </div>                      
@@ -301,69 +279,110 @@ and open the template in the editor.
       </div>
     </div>
   </div>
-</div> 
+</div> <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCRkGIJlO76NKI82zhEJ4leGih0-2u46g&callback=initMap">
+    </script>
 <script>
-    function initMap() {          
-        var uluru = {lat: -34.613089, lng: -58.499307};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: uluru
-        });
-        obtenerSucursales();                                                       
-        
-        function obtenerSucursales(){
-         fetch('./Sucursal')
-            .then(
-            function(response) {
-            if (response.status !== 200) {
-               console.log('Looks like there was a problem. Status Code: ' +
-                response.status);
-                return;
-            }
-      // Examine the text in the response
-      response.json().then(function(data) {
-          var i = 0;
-          while(i < data.length){
-              agregarMarcador({lat: data[i].Latitud
-              ,lng: data[i].Longitud}
-              ,data[i].Nombre);   
-              console.log(data[i].Latitud);
-              i++;
-          }        
-      });
-    }
-  )
-  .catch(function(err) {
-    console.log('Fetch Error :-S', err);
-  });
-        }
-        
-        //funcion para agregar marcador en el mapa con su nombre
-        function agregarMarcador(coordenadas, nombreSucursal){
-        var marker = new google.maps.Marker({
-              position: coordenadas,
-              map: map
-        });
-        
-        var infoWindow = new google.maps.InfoWindow({
-           content: '<h5> '+nombreSucursal+'</h5>' 
-        });
-        
-        marker.addListener('click',function(){
-            infoWindow.open(map,marker);
-        });
-      }
-      
-        
-   }
-$(document).on('ready', function () {    
     
-    $(".container_wizard").each(function(){
+  function initMap() {
+    var marcadores = new Array;
+    var uluru = {
+        lat: -34.613089,
+        lng: -58.499307
+    };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: uluru
+    });
+    obtenerSucursales();
+function obtenerSucursales() {
+    fetch('./Sucursal')
+        .then(
+            function(response) {
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' +
+                        response.status);
+                    return;
+                }
+                // Examine the text in the response
+                response.json().then(function(data) {
+                    var i = 0;
+                    //while por cada barrio
+                    while (i < data.length) {                        
+                        let barrio = data[i].Nombre;
+                        //html de la cabeza del barrio
+                        let barrioHtml = ` <div class="media"> <span class="message_userpic"><i class="fa fa-map-marker"></i> <span class="user-status bg-success "></span></span>
+                              <div class="media-body">
+                            <h6 class="mt-0 mb-1">${barrio} </h6>
+                            <p class="description">`;
+                    //for por cada sucursal dentro del barrio                    
+                        for (let x = 0; x < data[i].Sucursales.length; x++) {
+                            let sucursal = data[i].Sucursales[x];
+                            // por cada sucursal agrego marcador del maps
+                            agregarMarcador({lat: parseFloat(sucursal.Latitud),lng: parseFloat(sucursal.Longitud)}, sucursal.Nombre, sucursal.Id);
+                            //agrego nombre,direccion y telefono de la sucursal
+                             barrioHtml += `<a class="seleccionSucursal" data-id="${sucursal.Id}" data-lat="${sucursal.Latitud}" data-long="${sucursal.Longitud}"> 
+                             ${sucursal.Nombre} , ${sucursal.Direccion} , ${sucursal.Telefono1}  </a><br>`;
+                        }
+                        //cuando no hay mas sucursales dentro del barrio, sigo con el siguiente barrio.
+                         barrioHtml += `</p></div></div><hr>`;
+                         document.querySelector("#sucursales").innerHTML += barrioHtml;                               
+                        i++;
+                    }                        
+                      agregarEventosClick();
+                });
+            }
+        )
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });                      
+}
+
+function agregarEventosClick(){
+      var el = document.querySelectorAll('.seleccionSucursal');
+        for(var i=0; i < el.length; i++){
+            el[i].addEventListener('click', function () {
+                // el sucursalId es el mismo que se le agrega como id al marcador
+                let sucursalId = this.dataset.id;                                  
+                 for(let x = 0; x < marcadores.length;x++){
+                     if(marcadores[x].id == sucursalId){
+                          map.setZoom(16);
+                          map.panTo(marcadores[x].position);
+                           infoWindow.open(map, marker);
+                     }                     
+                 }                                  
+            }, false);
+        }
+}
+
+    //funcion para agregar marcador en el mapa con su nombre
+    function agregarMarcador(coordenadas, nombreSucursal, id) {
+        var marker = new google.maps.Marker({
+            position: coordenadas,
+            map: map,
+            id: id
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: '<h5> ' + nombreSucursal + '</h5>'
+        });
+
+        marker.addListener('click', function() {
+            infoWindow.open(map, marker);
+        });
+        marcadores.push(marker);
+
+    }                                        
+}
+
+
+
+$(document).on('ready', function() {    
+    $(".container_wizard").each(function() {
         var navListItems = $(this).find('div.setup-panel div a'),
             allWells = $(this).find('.setup-content'),
             allNextBtn = $('.nextBtn');
         allWells.hide();
-        navListItems.click(function (e) {
+        navListItems.click(function(e) {
             e.preventDefault();
             var $target = $($(this).attr('href')),
                 $item = $(this);
@@ -374,32 +393,27 @@ $(document).on('ready', function () {
             allWells.hide();
             $target.show();
             $target.find('input:eq(0)').focus();
-     });
-        allNextBtn.click(function(){
+        });
+        allNextBtn.click(function() {
             var curStep = $(this).closest(".setup-content"),
-            curStepBtn = curStep.attr("id"),
-            nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-            curInputs = curStep.find("input[type='text'],input[type='url']"),
-            isValid = true;
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                curInputs = curStep.find("input[type='text'],input[type='url']"),
+                isValid = true;
             $(".form-group").removeClass("has-danger");
-            for(var i=0; i<curInputs.length; i++){
-            if (!curInputs[i].validity.valid){
-                isValid = false;
-                $(curInputs[i]).closest(".form-group").addClass("has-danger");
+            for (var i = 0; i < curInputs.length; i++) {
+                if (!curInputs[i].validity.valid) {
+                    isValid = false;
+                    $(curInputs[i]).closest(".form-group").addClass("has-danger");
                 }
             }
             if (isValid)
-            nextStepWizard.removeAttr('disabled').trigger('click');
+                nextStepWizard.removeAttr('disabled').trigger('click');
         });
         $(this).find('.setup-panel div a.btn-primary').trigger('click');
     });
- });
-      
-
-    
+});
 </script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCRkGIJlO76NKI82zhEJ4leGih0-2u46g&callback=initMap">
-    </script>
+
     </body>
 </html>

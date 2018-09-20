@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Nata
@@ -12,4 +14,5 @@ package Entidades;
 public class Barrio {
     public int Id;
     public String Nombre;
+    public ArrayList<Sucursales>  Sucursales;
 }
