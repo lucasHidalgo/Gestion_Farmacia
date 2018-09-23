@@ -384,12 +384,36 @@ $(document).on('ready', function() {
                     return;
                 }                
                 response.json().then(function(data) {
-                    //rellenar  productos
-                    //hacer un for parecido a configsMpasSucursal.js linea 27.
-                    //en el console.log de abajo se mostraran las propiedades, ejemplo de como rellenar con los datos de base;
-                    //estas comillas tienen que estar SI O SI, para acceder a las propiedades es el signo pesos seguido de llaves. 
-                    //`<p>${data[i].Precio}</p>`
-                    console.log(data);
+                    
+                    let i = 0;
+                    
+                    while (i < data.length) {
+                        
+                        
+                    
+        document.querySelector("#productos").innerHTML += `<div class="col-md-8 col-sm-16 col-lg-8 col-xl-4">
+        <div class="card product">
+          <figure class="product_img  align-items-center justify-content-between d-flex"><a href="product_details.html"><img class="" src="Fotos Gestion Farmacia/Ibu600.jpg" alt=""></a></figure>
+          <div class="card-body"> <a href="product_details.html">
+            <h5 class="card-title "> ${data[i].Nombre}</h5>
+            </a>
+            <h3> ${data[i].Precio}</h3>
+            <p class="card-text">Descripcion producto</p>
+            <small>via : ${data[i].Via.Nombre}</small><br>
+            <small>area : ${data[i].Area.Nombre}</small><br>
+            <small>tipo: ${data[i].Tipo.Nombre}</small><br>
+            <small>venta libre :  ${data[i].EsVentaLibre.Nombre} </small><br>
+            <small>proveedor :  ${data[i].Proveedor.Nombre} </small><br>
+          </div>
+          <div class="card-body justify-content-between d-flex"> <button type="button" class="btn btn-success">Añadir al Carrito</button >
+        </div>
+        </div>`
+                        console.log(data[i]);
+                        i++;
+                        
+                    };
+                    
+       
                 }
         )
         .catch(function(err) {
