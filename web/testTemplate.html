@@ -256,64 +256,6 @@ and open the template in the editor.
                                  </div>
                                  <br>
                                  <div class="row" id="productos">
-                                       
-                                    <div class="col-md-8 col-sm-16 col-lg-8 col-xl-4">
-                                       <div class="card product">
-                                          <figure class="product_img  align-items-center justify-content-between d-flex"><img class="" src="Fotos Gestion Farmacia/Ibu600.jpg" alt=""></figure>
-                                          <div class="card-body">
-                                             <a >
-                                                <h5 class="card-title ">Ibuprofeno 600</h5>
-                                             </a>
-                                             <h3>$ 204 </h3>
-                                            <p class="card-text">Descripcion producto</p>
-                                             <small>via : nasal</small><br>
-                                             <small>area : pulmon</small><br>
-                                             <small>tipo: medicamento</small><br>
-                                             <small>venta libre :  si </small><br>
-                                             <small>proveedor :  roemmers </small><br>
-                                          </div>
-                                          <div class="card-body justify-content-between d-flex"> <button type="button" class="btn btn-success">Añadir al Carrito</button >
-                                          </div>
-                                       </div>
-                                    </div>      
-                                    <div class="col-md-8 col-sm-16 col-lg-8 col-xl-4">
-                                       <div class="card product">
-                                          <figure class="product_img  align-items-center justify-content-between d-flex"><img class="" src="Fotos Gestion Farmacia/Ibu600.jpg" alt=""></figure>
-                                          <div class="card-body">
-                                             <a >
-                                                <h5 class="card-title ">Ibuprofeno 600</h5>
-                                             </a>
-                                             <h3>$ 204</h3>
-                                       <p class="card-text">Crema</p>                                             
-                                             <small>area : manos</small><br>
-                                             <small>tipo: cosmetico</small><br>
-                                             <small>venta libre :  si </small><br>
-                                             <small>proveedor :  proveedor de cremas de mano </small><br>
-                                          </div>
-                                          <div class="card-body justify-content-between d-flex"> <button type="button" class="btn btn-success">Añadir al Carrito</button >
-                                          </div>
-                                       </div>
-                                    </div>        
-                                    <div class="col-md-8 col-sm-16 col-lg-8 col-xl-4">
-                                       <div class="card product">
-                                          <figure class="product_img  align-items-center justify-content-between d-flex"><img class="" src="Fotos Gestion Farmacia/Ibu600.jpg" alt=""></figure>
-                                          <div class="card-body">
-                                             <a >
-                                                <h5 class="card-title ">Ibuprofeno 600</h5>
-                                             </a>
-                                             <h3>$ 204</h3>
-                                             <p class="card-text">Descripcion producto</p>
-                                             <small>via : oral</small><br>
-                                             <small>area : estomago</small><br>
-                                             <small>tipo: medicamento</small><br>
-                                             <small>venta libre :  no </small><br>
-                                             <small>proveedor :  roemmers </small><br>
-                                          </div>
-                                          <div class="card-body justify-content-between d-flex"> <button type="button" class="btn btn-success">Añadir al Carrito</button >
-                                          </div>
-                                       </div>
-                                    </div>                                             
-                                     
                                 
                                  </div>
                                  <div class="wizard-footer">
@@ -354,7 +296,29 @@ and open the template in the editor.
             </div>
          </div>
       </div>
-   </div> <script async defer
+   </div> 
+   <!-- modal para el producto -->
+   <div class="modal fade" id="modalPopUp" tabindex="-1" role="dialog" aria-labelledby="modalPopUpLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">titulo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="agregarProducto">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+   
+   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCRkGIJlO76NKI82zhEJ4leGih0-2u46g&callback=initMap">
     </script>
     <script src="js/Sucursales/configMapsSucursal.js"></script>
@@ -383,45 +347,74 @@ $(document).on('ready', function() {
                         response.status);
                     return;
                 }                
-                response.json().then(function(data) {
-                    
-                    let i = 0;
-                    
-                    while (i < data.length) {
-                        
-                        
-                    
-        document.querySelector("#productos").innerHTML += `<div class="col-md-8 col-sm-16 col-lg-8 col-xl-4">
-        <div class="card product">
-          <figure class="product_img  align-items-center justify-content-between d-flex"><a href="product_details.html"><img class="" src="Fotos Gestion Farmacia/Ibu600.jpg" alt=""></a></figure>
-          <div class="card-body"> <a href="product_details.html">
-            <h5 class="card-title "> ${data[i].Nombre}</h5>
-            </a>
-            <h3> ${data[i].Precio}</h3>
-            <p class="card-text">Descripcion producto</p>
-            <small>via : ${data[i].Via.Nombre}</small><br>
-            <small>area : ${data[i].Area.Nombre}</small><br>
-            <small>tipo: ${data[i].Tipo.Nombre}</small><br>
-            <small>venta libre :  ${data[i].EsVentaLibre.Nombre} </small><br>
-            <small>proveedor :  ${data[i].Proveedor.Nombre} </small><br>
-          </div>
-          <div class="card-body justify-content-between d-flex"> <button type="button" class="btn btn-success">Añadir al Carrito</button >
-        </div>
-        </div>`
-                        console.log(data[i]);
-                        i++;
-                        
-                    };
-                    
-       
-                }
+                response.json().then(function(data) {                    
+                    let i = 0;                    
+                    while (i < data.length) {                         
+                        let msjVentaLibre = data[i].EsVentaLibre ? `<span class="status success">Venta Libre</span>` : `<span class="status danger">Acercarse a la sucursal</span>`;
+                            document.querySelector("#productos").innerHTML += `<div class="col-md-8 col-sm-16 col-lg-8 col-xl-4">
+                            <div class="card product">
+                              <figure class="product_img  align-items-center justify-content-between d-flex"><a"><img src="Fotos Gestion Farmacia/Ibu600.jpg"></a></figure>
+                              <div class="card-body"> <a>
+                                <h5 class="card-title "> ${data[i].Nombre}</h5>
+                                </a>
+                                <h3> ${data[i].Precio}</h3>
+                                <p class="card-text">Descripcion producto</p>                                
+                                <small>via : ${data[i].Via.Nombre}</small><br>
+                                <small>area : ${data[i].Area.Nombre}</small><br>
+                                <small>tipo: ${data[i].Tipo.Nombre}</small><br>
+                                <small>venta libre :  ${msjVentaLibre} </small><br>
+                                <small>proveedor :  ${data[i].Proveedor.Nombre} </small><br>                          
+                              </div>
+                              <div class="card-body justify-content-between d-flex">
+                                     <button type="button" class="btn btn-success btnModlProd" data-stockMax="${data[i].Stock}" data-idProd="${data[i].Id}">Añadir al Carrito</button >
+                            </div>
+                            </div>`;                        
+                        i++;                        
+                    };                           
+                        agregarEventoAbrirModal();
+                }                   
         )
         .catch(function(err) {
             console.log('Fetch Error :-S', err);
         });     
-    });
-        
+    });                     
     },false);
+    
+    function agregarEventoAbrirModal(){
+                  var el = document.querySelectorAll('.btnModlProd');
+                for(var i=0; i < el.length; i++){
+                    el[i].addEventListener('click', function () {
+                        // el sucursalId es el mismo que se le agrega como id al marcador
+                        let productoId = this.dataset.idprod;            
+                        let stockMax = this.dataset.stockmax;            
+                        $("#modalPopUp").modal('show');
+                        document.querySelector(".modal-body").innerHTML= `Desea llevar este producto ? 
+                        <input type="hidden" value="${productoId}" id="idProd" />
+                        <div class="input-group">                                                
+                            <input type="text" class="form-control text-center" value="0" id="cantidad">                                                
+                            <span>maximo : ${stockMax}</span>
+                        </div>`;
+                                                      
+                    }, false);
+                }      
+        }   
+    
+document.querySelector("#agregarProducto").addEventListener('click', function () {
+      let idProducto = document.querySelector("#idProd").value;
+      let cantidad = document.querySelector("#cantidad").value;
+      if(cantidad == 0){
+          alert("no se agrego ningun producto");
+          return;
+      }
+      let producto = {
+          idProducto:idProducto, 
+          cantidad:cantidad
+      };
+      //todo: verificar si ya tiene el mismo producto en el carrito, si lo tiene quedaria solo sumar la cantidad
+      //y verificar si excede del stock maximo.
+      ventaProducto.Productos.push(producto);
+  },false);
+  
     
     $(".container_wizard").each(function() {
         var navListItems = $(this).find('div.setup-panel div a'),

@@ -1,5 +1,8 @@
 
-var ventaProducto = {};
+var ventaProducto = {
+    Sucursal:null,
+    Productos: new Array
+};
   function initMap() {
     var marcadores = new Array;
     var uluru = {

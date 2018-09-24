@@ -38,7 +38,7 @@ public class Producto {
                     + "JOIN proveedores as prov on p.Proveedor = prov.Id "
                     + "JOIN vias as v on p.Via = v.Id "
                     + "JOIN tipos as t on p.Tipo = t.Id "
-                    + "WHERE sucursalId = 1 AND Stock >= 1";
+                    + "WHERE sucursalId = "+sucursalId+" AND Stock >= 1";
             Statement st = db.createStatement();          
             ResultSet rs = st.executeQuery(queryProductos);
             while(rs.next()){
