@@ -73,4 +73,48 @@ public class Producto {
        }                           
         return productos;
     }
+    
+    public static Producto ObtenerProductoPorId(Connection db, int productoId){
+        Producto p = new Producto();        
+           try{                   
+            String queryProductos = "SELECT"
+                    + " p.Id productoId ,p.Nombre prodNombre, p.Precio prodPrecio,p.EsVentaLibre, a.Id areaId, a.Nombre area ,prov.Nombre proveedor,prov.Id proveedorId,prov.Cuit proveedorCuit,"
+                    + "v.Id viaId ,v.Nombre via,t.Id tipoId, t.Nombre tipo "
+                    + "FROM productos as p"                    
+                    + " JOIN Area as a on p.Area = a.Id "
+                    + "JOIN proveedores as prov on p.Proveedor = prov.Id "
+                    + "JOIN vias as v on p.Via = v.Id "
+                    + "JOIN tipos as t on p.Tipo = t.Id "
+                    + "WHERE p.Id = "+productoId;
+            Statement st = db.createStatement();          
+            ResultSet rs = st.executeQuery(queryProductos);
+            if(rs.next()){
+                p.Id = rs.getInt("ProductoId");
+                p.Nombre = rs.getString("prodNombre");
+                p.Precio = rs.getDouble("prodPrecio");
+                p.EsVentaLibre = rs.getBoolean("EsVentaLibre");                
+                
+                p.Proveedor = new Proveedor();
+                p.Proveedor.Id = rs.getInt("proveedorId");
+                p.Proveedor.Nombre = rs.getString("proveedor");
+                p.Proveedor.Cuit = rs.getString("proveedorCuit");
+                
+                p.Tipo = new Tipo();
+                p.Tipo.Id = rs.getInt("tipoId");
+                p.Tipo.Nombre = rs.getString("tipo");
+                
+                p.Via = new Via();
+                p.Via.Id = rs.getInt("viaId");
+                p.Via.Nombre = rs.getString("via");
+                p.Area = new Area();
+                
+                p.Area.Id = rs.getInt("areaId");
+                p.Area.Nombre = rs.getString("area");                
+            }              
+       }
+       catch(Exception ex){
+           return null;
+       }                           
+        return p;
+    }
 }

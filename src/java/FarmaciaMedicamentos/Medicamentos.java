@@ -43,5 +43,7 @@ public class Medicamentos extends HttpServlet {
     Gson gson = new Gson();
     String json = gson.toJson(productos);          
     out.print(json);    
-  }
+  }    
 }
+
+

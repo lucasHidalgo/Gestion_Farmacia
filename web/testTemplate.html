@@ -260,7 +260,7 @@ and open the template in the editor.
                                  </div>
                                  <div class="wizard-footer">
                                     <div class="col-sm-16 ">
-                                       <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                                       <button id="elegirPago"class="btn btn-primary nextBtn btn-lg pull-right" type="button">Elegir metodo de pago</button>
                                     </div>
                                  </div>
                               </div>
@@ -274,17 +274,24 @@ and open the template in the editor.
                                  </div>
                                  <div class="row">
                                     <div class="col-sm-16">
-                                       <div class="alert alert-success" role="alert">
-                                          <h4 class="alert-heading">Well done!</h4>
-                                          <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-                                          <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                                       </div>
+                                        <div class="row" > 
+                                            <div id="metodoPago"></div>
+                                            </div>
+                            <div class="col-sm-16 col-md-8 col-lg-6">
+                                    <div class="form-group">
+                                      <label class="form-control-label">Precio</label>
+                                      <input type="number" id="precioProd" class="form-control"readonly >
+                                    </div>                                    
+                       </div>
+                                        
+                                        
+                                  
                                     </div>
                                  </div>
                                  <br>
                                  <div class="wizard-footer">
                                     <div class="col-sm-16 ">
-                                       <button class="btn btn-success btn-lg pull-right" type="submit">Finish!</button>
+                                       <button class="btn btn-success btn-lg pull-right" type="button" id="pagar">Finish!</button>
                                     </div>
                                  </div>
                               </div>
@@ -366,7 +373,7 @@ $(document).on('ready', function() {
                                 <small>proveedor :  ${data[i].Proveedor.Nombre} </small><br>                          
                               </div>
                               <div class="card-body justify-content-between d-flex">
-                                     <button type="button" class="btn btn-success btnModlProd" data-stockMax="${data[i].Stock}" data-idProd="${data[i].Id}">Añadir al Carrito</button >
+                                     <button type="button" class="btn btn-success btnModlProd" data-precioprod="${data[i].Precio}" data-stockMax="${data[i].Stock}" data-idProd="${data[i].Id}">Añadir al Carrito</button >
                             </div>
                             </div>`;                        
                         i++;                        
@@ -386,10 +393,12 @@ $(document).on('ready', function() {
                     el[i].addEventListener('click', function () {
                         // el sucursalId es el mismo que se le agrega como id al marcador
                         let productoId = this.dataset.idprod;            
-                        let stockMax = this.dataset.stockmax;            
+                        let stockMax = this.dataset.stockmax;      
+                        let precio = this.dataset.precioprod;
                         $("#modalPopUp").modal('show');
                         document.querySelector(".modal-body").innerHTML= `Desea llevar este producto ? 
                         <input type="hidden" value="${productoId}" id="idProd" />
+                        <input type="hidden" value="${precio}" id="precio" />
                         <div class="input-group">                                                
                             <input type="text" class="form-control text-center" value="0" id="cantidad">                                                
                             <span>maximo : ${stockMax}</span>
@@ -402,19 +411,77 @@ $(document).on('ready', function() {
 document.querySelector("#agregarProducto").addEventListener('click', function () {
       let idProducto = document.querySelector("#idProd").value;
       let cantidad = document.querySelector("#cantidad").value;
+      let precio = document.querySelector("#precio").value;
       if(cantidad == 0){
           alert("no se agrego ningun producto");
           return;
       }
       let producto = {
           idProducto:idProducto, 
-          cantidad:cantidad
+          cantidad:cantidad,
+          precio : precio
       };
       //todo: verificar si ya tiene el mismo producto en el carrito, si lo tiene quedaria solo sumar la cantidad
       //y verificar si excede del stock maximo.
       ventaProducto.Productos.push(producto);
   },false);
   
+  
+  
+  document.querySelector("#elegirPago").addEventListener("click",function(){
+      if(!ventaProducto.Productos){
+          alert("no selecciono ningun producto");
+          return;
+      }          
+      //Muestro lo que eligio el cliente
+      let opcionesSeleccionadas = `Sucursal: ${ventaProducto.Sucursal} <br> <hr>  Productos  :  `;
+      let precioTotal = 0;
+      for(let i = 0; i < ventaProducto.Productos.length;i++){
+          let prod = ventaProducto.Productos[i];
+          precioTotal += prod.precio * prod.cantidad;
+          opcionesSeleccionadas += `producto: ${prod.idProducto} Cantidad:  ${prod.cantidad} Precio c/u: ${prod.precio} <br>`;
+      }
+      opcionesSeleccionadas += '<hr>'
+    document.querySelector("#metodoPago").innerHTML = opcionesSeleccionadas;
+    document.querySelector("#precioProd").value = precioTotal;
+  },false);
+  
+    //realiza la venta del producto
+    document.querySelector("#pagar").addEventListener("click",function(){
+          fetch('./PagarProductos',{
+                    method: "post",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },  
+              body: JSON.stringify({
+                  idSucursal : ventaProducto.Sucursal,
+                  productoId : ventaProducto.Productos
+            })
+                })
+        .then(
+            function(response) {
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' +
+                        response.status);
+                    return;
+                }                
+                response.json().then(function(data) {                        
+                    if(data.success){
+                        alert("Se realizo la venta correctamente");
+                    }else
+                        alert("No se pudo realizar la venta");                        
+                }                   
+        )
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });     
+    });       
+    },false);
+    
+    
+    
+    
     
     $(".container_wizard").each(function() {
         var navListItems = $(this).find('div.setup-panel div a'),

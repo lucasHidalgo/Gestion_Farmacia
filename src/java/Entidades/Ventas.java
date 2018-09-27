@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.sql.*;
 import java.sql.Date;
 
 /**
@@ -22,4 +23,20 @@ public class Ventas {
     public int CajeroId;
     public Usuarios Cajero;
     public double PrecioVenta;
+    public boolean x;
+    
+    
+    public static boolean GenerarVenta(Connection db, Producto producto, int cantidad ){
+        try{                                                           
+                Statement statement = db.createStatement();
+
+                // insert the data
+                statement.executeUpdate("INSERT INTO ventas(ClienteId,ProductoId,Cantidad,FechaVenta,CajeroId,PrecioVenta) "
+                                                                + "VALUES (1, "+producto.Id+","+cantidad+", NOW(),1,"+producto.Precio+")"
+                                                            );
+        }catch(Exception ex){
+            return false;
+        }
+        return true;
+    }
 }
