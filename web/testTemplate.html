@@ -326,8 +326,8 @@ and open the template in the editor.
 </div>
    
    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCRkGIJlO76NKI82zhEJ4leGih0-2u46g&callback=initMap">
-    </script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCRkGIJlO76NKI82zhEJ4leGih0-2u46g&callback=initMap&sensor=false&libraries=places,geometry&.js">
+    </script>    
     <script src="js/Sucursales/configMapsSucursal.js"></script>
 <script>
  
@@ -338,6 +338,10 @@ $(document).on('ready', function() {
         if(!ventaProducto.Sucursal){
             alert("no se selecciono sucursal");
             return false;
+        }
+        var myNode = document.getElementById("productos");
+        while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
         }
          fetch('./Medicamentos/ObtenerProductosPorSucursal',{
                     method: "post",

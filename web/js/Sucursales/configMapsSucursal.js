@@ -13,8 +13,46 @@ var ventaProducto = {
         zoom: 14,
         center: uluru
     });
-    obtenerSucursales();
-function obtenerSucursales() {
+    var infoWindow = new google.maps.InfoWindow;
+    var positionMap;
+    // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+             positionMap = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            
+
+            infoWindow.setPosition(positionMap);
+            infoWindow.setContent('Usted esta aqui.');
+            infoWindow.open(map);
+            //map.setCenter(positionMap);
+            
+            obtenerSucursales(positionMap);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+        obtenerSucursales(null);
+      }
+      //fin geolocation
+      
+    
+   
+
+function obtenerSucursales(positionMap) {
     fetch('./Sucursal')
         .then(
             function(response) {
@@ -40,8 +78,8 @@ function obtenerSucursales() {
                             // por cada sucursal agrego marcador del maps
                             agregarMarcador({lat: parseFloat(sucursal.Latitud),lng: parseFloat(sucursal.Longitud)}, sucursal.Nombre, sucursal.Id);
                             //agrego nombre,direccion y telefono de la sucursal
-                             barrioHtml += `<a class="seleccionSucursal" data-id="${sucursal.Id}" data-lat="${sucursal.Latitud}" data-long="${sucursal.Longitud}"> 
-                             ${sucursal.Nombre} , ${sucursal.Direccion} , ${sucursal.Telefono1}  </a><br>`;
+                             barrioHtml += `<button type="button" class="seleccionSucursal btn btn-link" data-id="${sucursal.Id}" data-lat="${sucursal.Latitud}" data-long="${sucursal.Longitud}"> 
+                             ${sucursal.Nombre} , Direccion : ${sucursal.Direccion}  Telefono:, ${sucursal.Telefono1}  </button><br>`;
                         }
                         //cuando no hay mas sucursales dentro del barrio, sigo con el siguiente barrio.
                          barrioHtml += `</p></div></div><hr>`;
@@ -49,6 +87,33 @@ function obtenerSucursales() {
                         i++;
                     }                        
                       agregarEventosClickZoomMarcador();
+                })//al terminar la funcion y agregar los marcadores, pasamos a la geolocalizacion
+                        .then(function(){
+                            if(!positionMap){
+                                return;
+                            }
+                                 var closest;            
+                                $.each(marcadores,function(){                                              
+                                    let LatLng = new google.maps.LatLng(
+                                        parseFloat(positionMap.lat),
+                                        parseFloat(positionMap.lng)
+                                      )                                    
+                                     var distance=google.maps.geometry.spherical
+                                            .computeDistanceBetween(this.getPosition(),LatLng);                                        
+                                    //averiguar cual es el marcador mas cercano a la posicion local
+                              if(!closest || closest.distance > distance){
+                                closest={marker:this,
+                                         distance:distance};
+                              }
+                            });  
+                            if(closest){
+                                //se muestra el marcador mas cercano
+                              google.maps.event.trigger(closest.marker,'click');
+                              map.setZoom(14);
+                              map.panTo(closest.marker.position);                              
+                              ventaProducto.Sucursal = closest.marker.id;                                                                                  
+                            }        
+                            
                 });
             }
         )
@@ -57,16 +122,18 @@ function obtenerSucursales() {
         });                      
 }
 //esta funcion, genera un click en las lista de sucursales las cuales haran zoom en el mapa.
-function agregarEventosClickZoomMarcador(){
+function agregarEventosClickZoomMarcador(){    
       var el = document.querySelectorAll('.seleccionSucursal');
         for(var i=0; i < el.length; i++){
             el[i].addEventListener('click', function () {
                 // el sucursalId es el mismo que se le agrega como id al marcador
                 let sucursalId = this.dataset.id;                                  
-                 for(let x = 0; x < marcadores.length;x++){
+                cerrarTodosLosMarcadores();
+                 for(let x = 0; x < marcadores.length;x++){                     
                      if(marcadores[x].id == sucursalId){
                           map.setZoom(16);
-                          map.panTo(marcadores[x].position);
+                          map.panTo(marcadores[x].position);                                                                                
+                          google.maps.event.trigger(marcadores[x],'click');
                           ventaProducto.Sucursal = sucursalId;                          
                      }                     
                  }                                  
@@ -74,21 +141,27 @@ function agregarEventosClickZoomMarcador(){
         }
 }
 
+function cerrarTodosLosMarcadores() {
+         for(let x = 0; x < marcadores.length;x++){                                                                                                                                             
+                marcadores[x].infoWindow.close();
+            }
+}
+
     //funcion para agregar marcador en el mapa con su nombre
     function agregarMarcador(coordenadas, nombreSucursal, id) {
-        var marker = new google.maps.Marker({
-            position: coordenadas,
-            map: map,
-            id: id
-        });
+        
         var infoWindow = new google.maps.InfoWindow({
             content: '<h5> ' + nombreSucursal + '</h5>'
         });
-
+        var marker = new google.maps.Marker({
+            position: coordenadas,
+            map: map,
+            id: id,
+            infoWindow: infoWindow
+        });
         marker.addListener('click', function() {
             infoWindow.open(map, marker);
         });
-        marcadores.push(marker);
-
+        marcadores.push(marker);        
     }                                        
 }
