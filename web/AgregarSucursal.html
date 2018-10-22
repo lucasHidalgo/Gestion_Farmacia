@@ -15,7 +15,6 @@ and open the template in the editor.
         crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
-
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="Adminux/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="Adminux/css/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
@@ -36,175 +35,13 @@ and open the template in the editor.
               height: 550px;
               width: 60%;
              }
-              </style>
+    </style>    
 </head>
 
 <body class="menuclose-right">
-    <header class="navbar-fixed">
-        <nav class="navbar navbar-toggleable-md navbar-inverse bg-faded">
-            <div class="sidebar-left">
-                <a class="navbar-brand imglogo" href="index.html">
-                    RivotrilYa <img src="Fotos Gestion Farmacia/logo.jpg" width=45em />
-                </a>
-                <button class="btn btn-link icon-header mr-sm-2 pull-right menu-collapse"><span class="fa fa-bars"></span></button>
-            </div>
-            <form class="form-inline mr-sm-2  pull-left search-header hidden-md-down">
-                <input class="form-control " type="text" placeholder="Search" id="search_header">
-                <button class="btn btn-link icon-header " type="submit"><span class="fa fa-search"></span></button>
-            </form>
-            <div class="d-flex mr-auto"> &nbsp;</div>
-            <ul class="navbar-nav content-right">
-                <li class="v-devider"></li>
-                <li class="nav-item active">
-                    <button class="btn btn-link icon-header " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
-                            class="fa fa-envelope-o"></span> <span class="badge-number bg-success"></span></button>
-                    <div class="dropdown-menu message-container">
-                        <div class="list-unstyled">
-                            <a href="#" class="media">
-                                <span class="message_userpic"></span>
-                                <div class="media-body">
-                                    <h6 class="mt-0 mb-1">Dhananjay Chauhan</h6>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                    sollicitudin.
-                                </div>
-                            </a>
-                            <a href="#" class="media">
-                                <span class="message_userpic"></span>
-                                <div class="media-body">
-                                    <h6 class="mt-0 mb-1">Max Smith</h6>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                    sollicitudin.
-                                </div>
-                            </a>
-                            <a href="#" class="media">
-                                <span class="message_userpic"></span>
-                                <div class="media-body">
-                                    <h6 class="mt-0 mb-1">Astha Smith</h6>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                    sollicitudin.
-                                </div>
-                            </a>
-                            <a href="#" class="media">
-                                <span class="message_userpic"></span>
-                                <div class="media-body">
-                                    <h6 class="mt-0 mb-1">Tommy Cruszii</h6>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                    sollicitudin.
-                                </div>
-                            </a>
-                            <a href="#" class="media">
-                                <span class="message_userpic"></span>
-                                <div class="media-body">
-                                    <h6 class="mt-0 mb-1">Max Smith</h6>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                    sollicitudin.
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-link icon-header badgeCircle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><span class="fa fa-bell-o"></span><span class="badge-number bg-danger"></span></button>
-                    <div class="dropdown-menu message-container">
-                        <div class="list-unstyled">
-                            <div class="media">
-                                <span class="alert-block bg-primary"><span class="fa fa-bullhorn"></span></span>
-                                <div class="media-body"><b>Max Smith</b> updated post of <b>Astha Smith</b>. Cras sit
-                                    amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</div>
-                            </div>
-                            <div class="media">
-                                <span class="alert-block bg-warning"><span class="fa fa-bell-o"></span></span>
-                                <div class="media-body"><b>Max Smith</b> updated post of <b>Astha Smith</b>. Cras sit
-                                    amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</div>
-                            </div>
-                            <div class="media">
-                                <span class="alert-block bg-danger"><span class="fa fa-exclamation-triangle"></span></span>
-                                <div class="media-body"><b>Max Smith</b> updated post of <b>Astha Smith</b>. Cras sit
-                                    amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</div>
-                            </div>
-                            <div class="media">
-                                <div class="media-body"><b>Max Smith</b> updated post of <b>Astha Smith</b>. Cras sit
-                                    amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</div>
-                            </div>
-                            <div class="media">
-                                <div class="media-body"><b>Max Smith</b> updated post of <b>Astha Smith</b>. Cras sit
-                                    amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item hidden-xs-down">
-                    <button class="btn btn-link icon-header " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
-                            class="fa fa-th"></span> </button>
-                    <div class="dropdown-menu message-container box-links">
-                        <div class="list-unstyled"> <a href="?#" class="media"> <span class="quick-block "><span class="fa fa-bullhorn"></span></span>
-                            </a> <a href="?#" class="media"> <span class="quick-block "><span class="fa fa-bell-o"></span></span>
-                            </a> <a href="?#" class="media"> <span class="quick-block "><span class="fa fa-calendar"></span></span>
-                            </a> <a href="?#" class="media"> <span class="quick-block "><span class="fa fa-id-card"></span></span>
-                            </a> <a href="?#" class="media"> <span class="quick-block "><span class="fa fa-handshake-o"></span></span>
-                            </a> <a href="?#" class="media"> <span class="quick-block "><span class="fa fa-camera-retro"></span></span>
-                            </a> <a href="?#" class="media"> <span class="quick-block "><span class="fa fa-flask"></span></span>
-                            </a> <a href="?#" class="media"> <span class="quick-block "><span class="fa fa-plane"></span></span>
-                            </a> <a href="?#" class="media"> <span class="quick-block "><span class="fa fa-pie-chart"></span></span>
-                            </a> </div>
-                    </div>
-                </li>
-                <li class="v-devider"></li>
-                <li class="nav-item "> <a class="btn btn-link icon-header menu-collapse-right" href="#"><span class="fa fa-podcast"></span>
-                    </a> </li>
-            </ul>
-            <div class="sidebar-right pull-right ">
-                <ul class="navbar-nav  justify-content-end">
-                    <li class="nav-item">
-                        <button class="btn-link btn userprofile" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"><span class="userpic"></span> <span class="text">Usuario</span></button>
-                        <div class="dropdown-menu"> <a class="dropdown-item" href="customerprofile.html">Profile</a> <a
-                                class="dropdown-item" href="#">Analytics Report</a>
-                        </div>
-                    </li>
-                    <li><a href="sign-in2.html" class="btn btn-link icon-header"><span class="fa fa-sign-out"></span></a></li>
-                </ul>
-            </div>
-        </nav>
+    <header class="navbar-fixed">    
     </header>
-    <div class="sidebar-left">
-        <div class="user-menu-items">
-            <div class="list-unstyled btn-group">
-                <button class="media btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"> <span class="message_userpic"><img class="d-flex" src="../img/user-header.png"
-                            alt="Generic user image"></span> <span class="media-body"> <span class="mt-0 mb-1">Usuario</span>
-                        <small>New Jersey, UK.</small> </span> </button>
-                <div class="dropdown-menu"> <a class="dropdown-item" href="customerprofile.html">Mi perfil</a> <a class="dropdown-item"
-                        href="#">Ultimas compras</a>
-                </div>
-            </div>
-        </div>
-        <br class="show">
-        <ul class="nav flex-column in" id="side-menu" style="">
-            <li class="title-nav">MENU</li>
-            <li class="nav-item ">
-                <a href="javascript:void(0)" class="menudropdown nav-link show">Sucursales<i class="fa fa-angle-down "></i></a>
-                <ul class="nav flex-column nav-second-level  in" style="display: block;">
-                    <li class="nav-item active"><a href="Sucursales.html" class="nav-link  active"><i class="fa fa-globe"></i>
-                            Mapa</a></li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
-            <li class="nav-item ">
-                <a href="javascript:void(0)" class="menudropdown nav-link">Productos<i class="fa fa-angle-down "></i></a>
-                <ul class="nav flex-column nav-second-level">
-                    <li class="in nav-item"><a href="Reservas.html" class="nav-link ">Reservas</a></li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
-            <li class="nav-item">
-                <a href="javascript:void(0)" class="menudropdown nav-link">Busqueda Laboral <i class="fa fa-angle-down "></i></a>
-                <ul class="nav flex-column nav-second-level">
-                    <li class="nav-item"><a class="nav-link" href="BusquedaLaboral.html">Busqueda Laboral</a></li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
+    <div class="sidebar-left" id="barraNavegacion">    
     </div>
 
     <div class="wrapper-content">
@@ -213,41 +50,54 @@ and open the template in the editor.
                 <div class="col-sm-16">
                     <div class="card">
                         <div class="card-header">
-                            <h6 class="card-title">Step Wizard Thin</h6>
+                            <h6 class="card-title">Agregar sucursal</h6>
                         </div>
                         <div class="card-body">
                             <div class="container-fluid p-0">
                                 <div class="row setup-content" id="step-12" style="display: flex;">
-                                    <div class="col-sm-16">
+                                    <div class="col-sm-16">                                        
                                         <div class="row">
-                                            <div class="col-sm-16">
-                                                <h3 class=" mb-2"> Step 1</h3>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div id="map"></div>
-                                            <div class="col-md-6 col-lg-6 col-xl-6">
+                                            <div id="map" class="col-md-7 col-lg-7 col-xl-7"></div>
+                                            <div class="col-md-9 col-lg-9 col-xl-9">
                                                 <div class="card full-screen-container">
                                                     <div class="card-header align-items-start justify-content-between flex">
                                                         <h5 class="card-title  pull-left">Sucursales </h5>
                                                     </div>
-                                                    <div class="card-body">
-                                                        <form>
-                                                            <div class="form-group">
-                                                                <label > Direccion:
-                                                                <input class="form-control" type="text">
-                                                            </label>
-                                                            </div>
-                                                        </form>
+                                                    <div class="card-body col-md-16 col-lg-16 col-xl-16">
+                                                        <div class="form-group">
+                                                            <label for="inNombre">Nombre</label>
+                                                            <input type="text" class="form-control" id="inNombre">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inBarrio">Barrio</label>
+                                                            <select class="form-control" id="inBarrio">
+                                                                <option value="">Seleccione Barrio</option>
+                                                                <option value="1">Palermo</option>
+                                                                <option value="2">Monte castro</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inTelefono1">Telefono 1</label>
+                                                            <input type="text" class="form-control" id="inTelefono1">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inTelefono2">Telefono 2</label>
+                                                            <input type="text" class="form-control" id="inTelefono2">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inDireccion">Direccion</label>
+                                                            <input type="text" class="form-control" id="inDireccion">
+                                                        </div>
+                                                        <button type="button" class="btn btn-primary" id="buscarDireccion">Buscar
+                                                            direccion</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="wizard-footer">
                                             <div class="col-sm-16 ">
-                                                <button id="elegirProductos" class="btn btn-primary nextBtn btn-lg pull-right"
-                                                    type="button">Siguiente</button>
+                                                <button id="agregarSucursal" class="btn btn-primary nextBtn btn-lg pull-right"
+                                                    type="button">Agregar sucursal</button>
                                             </div>
                                         </div>
                                     </div>
@@ -255,15 +105,16 @@ and open the template in the editor.
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
     </div>
+    <script src="js/Header/header.js" type="text/javascript"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCRkGIJlO76NKI82zhEJ4leGih0-2u46g&callback=initMap&sensor=false&libraries=places,geometry&.js">
     </script>
-    <script src="js/Sucursales/configMapsSucursal.js"></script>
+    <script src="js/Sucursales/agregarSucursal.js"></script>
+
 </body>
 
 </html>
