@@ -41,11 +41,42 @@ function geocodeAddress(geocoder, resultsMap) {
 
   document.querySelector('#agregarSucursal').addEventListener('click',function(){
       nuevaSucursal.Nombre = document.querySelector('#inNombre').value;
-      nuevaSucursal.Barrio = document.querySelector("#inBarrio").value;
+      nuevaSucursal.BarrioId = document.querySelector("#inBarrio").value;
       nuevaSucursal.Telefono1 = document.querySelector('#inTelefono1').value;
-      nuevaSucursal.telefono2 = document.querySelector('#inTelefono2').value;
+      nuevaSucursal.Telefono2 = document.querySelector('#inTelefono2').value;
       console.log(nuevaSucursal);
-  },false)
+      
+            fetch('./AgregarSucursal',{
+                    method: "post",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },  
+              body: JSON.stringify({
+                  nuevaSucursal: nuevaSucursal
+            })
+                })
+        .then(
+            function(response) {
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' +
+                        response.status);
+                    return;
+                }                
+                response.json().then(function(data) {                        
+                    if(data.success){
+                        alert("Se realizo la venta correctamente");
+                    }else
+                        alert("No se pudo realizar la venta");                        
+                }                   
+        )
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });     
+    });      
+      
+      
+  },false);
 
   
 

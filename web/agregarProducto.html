@@ -41,57 +41,130 @@ and open the template in the editor.
 
 
 
-
-    <div class="wrapper-content">
-        <div class="container">
-            <div class="col-md-8 col-sm-16 col-lg-8 col-xl-4">
-                <div class="card product">
-                    <figure class="product_img  align-items-center justify-content-between d-flex">
-                        <a><img src="Fotos Gestion Farmacia/Ibu600.jpg"></a>
-                    </figure>
-                    <div class="card-body">
-                        <input type="text" name="nombre" placeholder="Ibuprofeno 600">
-                        <input type="number" placeholder="Precio">
-                        <select value="1">
-                            <option>
-                                Area
-                            </option>
-                        </select>
-                        <select value="1">
-                            <option>
-                                Via
-                            </option>
-                        </select>
-                        <select value="1">
-                            <option>
-                                Tipo
-                            </option>
-                        </select>
-                        <select value="1">
-                            <option>
-                                Proveedor
-                            </option>
-                        </select>
-                        <label><input type="checkbox">Es Venta Libre</label>
-                    </div>
-                    <div class="card-body justify-content-between d-flex">
-                        <button type="button" class="btn btn-success btnModlProd" data-precioprod="${data[i].Precio}"
-                            data-stockMax="${data[i].Stock}" data-idProd="${data[i].Id}">Añadir al Carrito</button>
-                    </div>
-                </div>
+<div class="wrapper-content">
+  <div class="container">
+    <div class="row  align-items-center justify-content-between">      
+    </div>        
+        <div class="row">
+      <div class="col-md-16">
+        <div class="card product ">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-16 col-sm-16 col-lg-8 col-xl-8">                
+                    <img src="Fotos Gestion Farmacia/Ibu600.jpg" alt="">                                 
+              </div>
+              <div class="col-md-16 col-sm-16 col-lg-8 col-xl-8">
+                  <form>
+                      <div class="form-group">
+                      <label for="nombreproducto">Nombre Producto</label>
+                <input type="text" class="form-control" id="nombreproducto" placeholder="Ibuprofeno 600">
+                      </div>
+                      <div class="form-group">
+                      <label for="precioproducto">Precio</label>
+                <input type="number" class="form-control" id="precio">
+                      </div>
+                      <div class="form-group">                      
+                          <select class="form-control col-8" id="area">
+                  <option value="">Seleccione Area</option>
+                  <option value="1">Option 1</option>                  
+                  <option value="2">Option 2</option>                  
+                </select>
+                      </div>
+                      <div class="form-group">                      
+                <select class="form-control col-8" id="via">
+                  <option value="">Seleccione Via</option>  
+                    <option value="1">Option 1</option>                  
+                  <option value="2">Option 2</option>   
+                </select>
+                      </div>
+                      <div class="form-group">                      
+                <select class="form-control col-8" id="tipo">
+                  <option value="">Seleccione Tipo</option>  
+                    <option value="1">Option 1</option>                  
+                  <option value="2">Option 2</option>   
+                </select>
+                      </div>
+                      <div class="form-group">                      
+                <select class="form-control col-8" id="proveedor">
+                  <option value="">Seleccione Proveedor</option>  
+                    <option value="1">Option 1</option>                  
+                  <option value="2">Option 2</option>   
+                </select>
+                      </div>
+                      <div class=" form-check">
+                          <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" name="cbxTest" id="esVentaLibre" value="Es venta libre">
+                  <i class="fa fa-check"></i></label>
+                Es venta libre
+                      </div>
+                  </form><br>
+                  <button type="submit" class="btn btn-outline-info btn-lg" onclick="getData()">Crear Producto</button>
+              </div>
             </div>
+          </div>
         </div>
-
-
-
-
+      </div>
+    </div>
+      
 
         <script src="js/Header/header.js" type="text/javascript"></script>
-        <script>
+   
+<script>
+ 
+ var getData = function(){
+ 
+ var nombreproducto = document.getElementById("nombreproducto").value;
+ var precio = document.getElementById("precio").value;
+ var area = document.getElementById("area").value;
+ var via = document.getElementById("via").value;
+ var tipo = document.getElementById("tipo").value;
+ var proveedor = document.getElementById("proveedor").value; 
+ let esVentaLibre = document.querySelector('#esVentaLibre').checked;
+ 
+ let producto = {
+     nombre : nombreproducto,
+     precio: precio,
+     area: area,
+     via: via,
+     tipo: tipo,
+     proveedor: proveedor,
+     ventaLibre: esVentaLibre
+ };
+    //fetch producto
+    
+         fetch('./PagarProductos',{
+                    method: "post",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },  
+              body: JSON.stringify({
+                  producto: producto
+            })
+                })
+        .then(
+            function(response) {
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' +
+                        response.status);
+                    return;
+                }                
+                response.json().then(function(data) {                        
+                    if(data.success){
+                        alert("Se realizo la venta correctamente");
+                    }else
+                        alert("No se pudo realizar la venta");                        
+                }                   
+        )
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });     
+    });      
+    
+ };
 
-
-
-        </script>
+ 
+</script>
 </body>
 
 </html>

@@ -139,8 +139,8 @@ let leftNavBar = ` <div class="user-menu-items">
 <ul class="nav flex-column in" id="side-menu" style="">
 <li class="title-nav">MENU</li>
 <li class="nav-item ">
-    <a href="javascript:void(0)" class="menudropdown nav-link show">Sucursales<i class="fa fa-angle-down "></i></a>
-    <ul class="nav flex-column nav-second-level  in" style="display: block;">
+    <a href="javascript:void(0)" class="menudropdown nav-link">Sucursales<i class="fa fa-angle-down "></i></a>
+    <ul class="nav flex-column nav-second-level  in" style="display: none;">
         <li class="nav-item"><a href="Sucursales.html" class="nav-link"><i class="fa fa-globe"></i>
                 Mapa</a></li>
         <li class="nav-item"><a href="AgregarSucursal.html" class="nav-link"><i class="fa fa-globe"></i>

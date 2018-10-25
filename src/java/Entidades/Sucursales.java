@@ -15,6 +15,7 @@ import java.util.ArrayList;
  * @author lucas
  */
 public class Sucursales {
+  
     public int Id;
     public String Nombre;    
     public Barrio Barrio;
@@ -23,6 +24,7 @@ public class Sucursales {
     public String Telefono1;
     public String Telefono2;
     public String Direccion;
+    public int BarrioId;
     
     
     public static Sucursales obtenerSucursal(Connection conn, int idSucursal){
@@ -95,5 +97,37 @@ public class Sucursales {
         
         return barrios;
     }
+    //Verifico que no haya una sucursal con la misma direccion geografica
+      public static boolean ExisteDireccion(Connection db, Sucursales sucursalCrear) {
+          try{
+          String querySucursal = "SELECT Id FROM sucursales "
+                  + " WHERE Direccion = '"+sucursalCrear.Direccion+"' AND Latitud = '"+sucursalCrear.Latitud+"' AND Longitud = '"+sucursalCrear.Longitud+"'";
+          
+            Statement st = db.createStatement();          
+            ResultSet rs = st.executeQuery(querySucursal);
+            
+            if(rs.next()){ 
+                return true;
+            }
+          }catch(Exception ex){
+              //si cae en catch no crear.
+               return true;
+          }                    
+        return false;
+    }
+    
+      
+    public static void AgregarSucursal(Connection db, Sucursales sucursalCrear) {
+        try{
+        Statement statement = db.createStatement();
+
+                // insert the data
+                statement.executeUpdate("INSERT INTO sucursales(Direccion,Latitud,Longitud,Barrio,Nombre,Telefono1,Telefono2)   VALUES ( '"+sucursalCrear.Direccion+"','"+sucursalCrear.Latitud+"','"+sucursalCrear.Longitud+"',"+sucursalCrear.BarrioId+",'"+sucursalCrear.Nombre+"','"+sucursalCrear.Telefono1+"','"+sucursalCrear.Telefono2+"')"
+                                                            );    
+        }catch(Exception ex){
+            
+        }
+    }
+    
 
 }

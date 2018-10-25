@@ -36,6 +36,7 @@ var ventaProducto = {
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
+          obtenerSucursales(null);
         }
       
 
@@ -44,8 +45,7 @@ var ventaProducto = {
         infoWindow.setContent(browserHasGeolocation ?
                               'Error: The Geolocation service failed.' :
                               'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-        obtenerSucursales(null);
+        infoWindow.open(map);        
       }
       //fin geolocation
       
